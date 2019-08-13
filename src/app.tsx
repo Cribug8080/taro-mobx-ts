@@ -14,7 +14,7 @@ import './app.less'
 
 const store = {
   counterStore
-}
+};
 
 class App extends Component {
 
@@ -27,15 +27,50 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/mine/index',
+      'pages/cart/index',
+      'pages/classify/index',
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#ccc',
+      selectedColor: 'red',
+      backgroundColor	: '#fff',
+      borderStyle	: 'black',
+      list :[
+        {
+          pagePath: 'pages/index/index',
+          text: '首页',
+          iconPath: './images/tab/home.png',
+          selectedIconPath: './images/tab/home-active.png',
+        },
+        {
+          pagePath: 'pages/classify/index',
+          text: '分类',
+          iconPath: './images/tab/classify.png',
+          selectedIconPath: './images/tab/classify-active.png',
+        },
+        {
+          pagePath: 'pages/cart/index',
+          text: '购物车',
+          iconPath: './images/tab/cart.png',
+          selectedIconPath: './images/tab/cart-active.png',
+        },
+        {
+          pagePath: 'pages/mine/index',
+          text: '我的',
+          iconPath: './images/tab/mine.png',
+          selectedIconPath: './images/tab/mine-active.png',
+        },
+      ]
     }
-  }
+  };
 
   componentDidMount () {}
 

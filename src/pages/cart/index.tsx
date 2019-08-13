@@ -8,7 +8,7 @@ class Index extends Component{
 
   render(): any {
     return <div>
-      我的
+      购物车
     </div>
   }
 }
