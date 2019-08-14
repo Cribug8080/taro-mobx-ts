@@ -1,15 +1,24 @@
-import {Component, Config} from "@tarojs/taro";
+import Taro, {Component, Config} from "@tarojs/taro";
+import './index.less'
+import { AtButton } from 'taro-ui'
+import {View} from "@tarojs/components";
 
 class Index extends Component{
 
   config: Config = {
-    navigationBarTitleText: '我的'
+    navigationBarTitleText: '购物车',
   };
 
+  componentDidMount(): void {
+  }
+
   render(): any {
-    return <div>
-      购物车
-    </div>
+    return (
+      <View>
+        购物车
+        <AtButton>按钮文案</AtButton>
+      </View>
+    )
   }
 }
 

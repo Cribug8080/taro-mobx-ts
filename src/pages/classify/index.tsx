@@ -1,4 +1,4 @@
-import {Component, Config} from "@tarojs/taro";
+import Taro, {Component, Config} from "@tarojs/taro";
 
 class Index extends Component{
 

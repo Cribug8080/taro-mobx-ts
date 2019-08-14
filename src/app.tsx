@@ -2,6 +2,8 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/mobx'
 import Index from './pages/index'
 
+import 'taro-ui/dist/style/index.scss'
+
 import counterStore from './store/counter'
 
 import './app.less'
@@ -31,6 +33,7 @@ class App extends Component {
       'pages/mine/index',
       'pages/cart/index',
       'pages/classify/index',
+      'pages/search/index',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -51,7 +54,7 @@ class App extends Component {
           selectedIconPath: './images/tab/home-active.png',
         },
         {
-          pagePath: 'pages/classify/index',
+          pagePath: 'pages/search/index',
           text: '分类',
           iconPath: './images/tab/classify.png',
           selectedIconPath: './images/tab/classify-active.png',
@@ -72,7 +75,11 @@ class App extends Component {
     }
   };
 
-  componentDidMount () {}
+  componentDidMount () {
+    Taro.getSystemInfo({}).then(res => {
+      Taro.$navBarMarginTop = res.statusBarHeight || 0;
+    })
+  }
 
   componentDidShow () {}
 
