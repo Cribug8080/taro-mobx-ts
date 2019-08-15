@@ -5,6 +5,7 @@ import Index from './pages/index'
 import 'taro-ui/dist/style/index.scss'
 
 import counterStore from './store/counter'
+import searchStore from './store/search'
 
 import './app.less'
 
@@ -15,7 +16,8 @@ import './app.less'
 // }
 
 const store = {
-  counterStore
+  counterStore,
+  searchStore,
 };
 
 class App extends Component {
