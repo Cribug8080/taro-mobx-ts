@@ -1,4 +1,5 @@
-import {Component, Config} from "@tarojs/taro";
+import Taro, {Component, Config} from "@tarojs/taro";
+import {View} from "@tarojs/components";
 
 class Index extends Component{
 
@@ -7,9 +8,11 @@ class Index extends Component{
   };
 
   render(): any {
-    return <div>
-      我的
-    </div>
+    return (
+      <View>
+        我的
+      </View>
+    )
   }
 }
 

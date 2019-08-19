@@ -8,13 +8,10 @@ import HistorySuggest from './components/history-suggest'
 import GuessSearch from './components/guess-search'
 import SearchRes from './components/search-res'
 
+import {searchStoreType} from '../../store/search'
+
 type PageStateProps = {
-  searchStore: {
-    historyList: Array<any>,
-    suggestList: Array<any>,
-    clearHistory: Function,
-    updateSuggest: Function,
-  }
+  searchStore: searchStoreType;
 }
 
 interface Index {
@@ -75,6 +72,8 @@ class Index extends Component{
     this.setState({
       num
     });
+
+    this.props.searchStore.updateGuess(val);
     console.log('search page searchVal = ', val)
   };
 
@@ -95,6 +94,10 @@ class Index extends Component{
     console.log('search page handleConfirm = ')
   };
 
+  guessListClick = (val) => {
+    console.log('search page guessListClick = ', val);
+  };
+
   render(): any {
     const {searchStore} = this.props;
     const {num} = this.state;
@@ -105,7 +108,10 @@ class Index extends Component{
                 onConfirm={this.handleConfirm}
                 onFocus={this.handleFocus}/>
         {
-          num === 1 ? <GuessSearch /> : (num ===2 ? <SearchRes /> : <HistorySuggest searchStore={searchStore}/>)
+          num === 1 ? <GuessSearch onGuessClick={this.guessListClick}
+                                   searchStore={searchStore}/> :
+            (num ===2 ? <SearchRes searchStore={searchStore}/> :
+              <HistorySuggest searchStore={searchStore}/>)
         }
       </View>
     )

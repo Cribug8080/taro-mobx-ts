@@ -55,16 +55,25 @@ let suggestList = [
   },
 ];
 
+export type searchStoreType = {
+  historyList: Array<any>;
+  suggestList: Array<any>;
+  guessList: Array<any>;
+  clearHistory: Function;
+  updateSuggest: Function;
+  updateGuess: Function;
+}
+
 //https://www.easy-mock.com/mock/5d5104f7cef7fe7b0911917e/mall/user/search-history
 const searchStore = observable({
   historyList: historyList,
   suggestList: suggestList,
+  guessList: [],
   clearHistory() {
     this.historyList = [];
   },
   updateSuggest(callback) {
     api.get('mall/user/search-history').then(res => {
-      console.log(res.data.data.list)
       this.suggestList = res.data.data.list.map((v, i) => {
         v.hot = i < 2;
         return v;
@@ -72,6 +81,13 @@ const searchStore = observable({
       callback && callback();
     }).catch(() => {
       callback && callback();
+    })
+  },
+  updateGuess(val){
+    this.guessList = new Array(5).fill(1).map((v, i) => {
+      return {
+        title: val + i,
+      }
     })
   },
   refresh(){

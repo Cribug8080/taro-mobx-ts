@@ -4,20 +4,27 @@ import {AtActivityIndicator, AtTag} from "taro-ui";
 import fire from "../../../images/fire.png";
 import { observer } from "@tarojs/mobx";
 import './index.less';
+import {searchStoreType} from '../../../store/search'
 
 type PageStateProps = {
-  searchStore: {
-    historyList: Array<any>,
-    suggestList: Array<any>,
-    clearHistory: Function,
-    updateSuggest: Function,
-  }
+  searchStore: searchStoreType;
 }
 
 interface Index {
   props: PageStateProps;
   state: any;
 }
+
+const defaultProps = {
+  searchStore: {
+    historyList: [],
+    suggestList: [],
+    guessList: [],
+    clearHistory: () => {},
+    updateSuggest: () => {},
+    updateGuess: () => {},
+  }
+};
 
 @observer
 class Index extends Component{
@@ -118,13 +125,6 @@ class Index extends Component{
   }
 }
 
-Index.defaultProps = {
-  searchStore: {
-    historyList: [],
-    suggestList: [],
-    clearHistory: () => {},
-    updateSuggest: () => {},
-  }
-};
+Index.defaultProps = defaultProps;
 
 export default Index;

@@ -40,11 +40,15 @@ class Index extends Component{
     this.props.onFocus();
   };
 
+  handleClickBack = () => {
+    Taro.navigateBack();
+  };
+
   render () {
     console.log(this.props);
     return (
       <View className='head-wrap' style={{marginTop: `${Taro.$navBarMarginTop}px`,}}>
-        <View className="head_left_back" />
+        <View className="head_left_back" onClick={this.handleClickBack}/>
         <View className="head_right_search">
           {/*<input className="head_right_search_item" confirmType='search'/>*/}
           <AtSearchBar value={this.state.value}
