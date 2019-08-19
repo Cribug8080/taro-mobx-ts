@@ -36,6 +36,7 @@ class App extends Component {
       'pages/cart/index',
       'pages/classify/index',
       'pages/search/index',
+      'pages/active/index',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -56,7 +57,7 @@ class App extends Component {
           selectedIconPath: './images/tab/home-active.png',
         },
         {
-          pagePath: 'pages/search/index',
+          pagePath: 'pages/classify/index',
           text: '分类',
           iconPath: './images/tab/classify.png',
           selectedIconPath: './images/tab/classify-active.png',

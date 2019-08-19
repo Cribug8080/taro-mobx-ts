@@ -1,7 +1,9 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View, Button, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
+
+import SearchHeader from './search-header';
 
 import './index.less'
 
@@ -30,13 +32,12 @@ class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '首页'
-  }
+    navigationBarTitleText: '京东购物'
+  };
 
   componentWillMount () { }
 
   componentWillReact () {
-    console.log('componentWillReact')
   }
 
   componentDidMount () { }
@@ -48,28 +49,42 @@ class Index extends Component {
   componentDidHide () { }
 
   increment = () => {
-    const { counterStore } = this.props
+    const { counterStore } = this.props;
     counterStore.increment()
-  }
+  };
 
   decrement = () => {
-    const { counterStore } = this.props
+    const { counterStore } = this.props;
     counterStore.decrement()
-  }
+  };
 
   incrementAsync = () => {
-    const { counterStore } = this.props
+    const { counterStore } = this.props;
     counterStore.incrementAsync()
-  }
+  };
 
   render () {
-    const { counterStore: { counter } } = this.props
+    const { counterStore: { counter } } = this.props;
     return (
       <View className='index'>
-        <Button onClick={this.increment}>+</Button>
-        <Button onClick={this.decrement}>-</Button>
-        <Button onClick={this.incrementAsync}>Add Async</Button>
-        <Text>{counter}</Text>
+        {/*<Button onClick={this.increment}>+</Button>*/}
+        {/*<Button onClick={this.decrement}>-</Button>*/}
+        {/*<Button onClick={this.incrementAsync}>Add Async</Button>*/}
+        {/*<Text>{counter}</Text>*/}
+        <View>
+          <SearchHeader
+            left={{
+              url: '/pages/classify/index',
+              isTab: true,
+            }}
+            right={{
+              url: '/pages/active/index',
+            }}
+            main={{
+              url: '/pages/search/index',
+            }}
+          />
+        </View>
       </View>
     )
   }

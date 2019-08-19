@@ -1,4 +1,53 @@
 .index {
   height: 100%;
-  background-color: aqua;
+  background-color: red;
+}
+
+@imageSize: 50px;
+
+.search-header {
+  padding: 10px 20px 10px 20px;
+  height: @imageSize;
+  .main {
+    display: inline-block;
+    width: 545px;
+    height: 100%;
+    margin: 0 20px;
+    padding: 0 0 0 20px;
+    line-height: 50px;
+    background-color: #fff;
+    border-radius: @imageSize;
+    color: #ccc;
+    font-size: small;
+  }
+  .image {
+    width: @imageSize;
+    height: 100%;
+  }
+  .image-left {
+    float: left;
+  }
+  .image-right {
+    float: right;
+  }
+}
+
+.gun {
+  height: 150Px;
+  width: 100%;
+  background-image: url(./../../images/home-header-bg.png);
+  background-size: 100% 100%;
+  .main {
+    height: 100%;
+    margin: 20px;
+    .image-wrap {
+      height: 100%;
+      width: 100%;
+      .image {
+        border-radius: 10px;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
 }
