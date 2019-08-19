@@ -4,6 +4,7 @@ import { View } from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
 import SearchHeader from './search-header';
+import Main from './main'
 
 import './index.less'
 
@@ -84,6 +85,7 @@ class Index extends Component {
               url: '/pages/search/index',
             }}
           />
+          <Main />
         </View>
       </View>
     )

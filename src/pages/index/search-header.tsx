@@ -53,11 +53,6 @@ class Index extends Component{
   };
 
   render(): any {
-    const l1 = 'https://raw.githubusercontent.com/Cribug8080/images/master/weixin/l1.dpg';
-    const l2 = 'https://raw.githubusercontent.com/Cribug8080/images/master/weixin/l2.dpg';
-    const l3 = 'https://raw.githubusercontent.com/Cribug8080/images/master/weixin/l3.dpg';
-    const l4 = 'https://raw.githubusercontent.com/Cribug8080/images/master/weixin/l4.dpg';
-    const l5 = 'https://raw.githubusercontent.com/Cribug8080/images/master/weixin/l5.dpg';
     return (
       <View>
         <View className="search-header">
@@ -68,33 +63,6 @@ class Index extends Component{
           </View>
           <Image src={iconCart} className="image image-right" onClick={ this.handleClickRight }/>
         </View>
-        <View className="gun">
-          <Swiper
-            className='main'
-            indicatorColor='#999'
-            indicatorActiveColor='#333'
-            circular
-            indicatorDots
-            autoplay>
-            <SwiperItem>
-              <View className='image-wrap'>
-                <Image className='image' src={l1}/>
-              </View>
-            </SwiperItem>
-            <SwiperItem>
-              <View className='image-wrap'>
-                <Image className='image' src={l2}/>
-              </View>
-            </SwiperItem>
-            <SwiperItem>
-              <View className='image-wrap'>
-                <Image className='image' src={l3}/>
-              </View>
-            </SwiperItem>
-          </Swiper>
-        </View>
-
-
       </View>
     )
   }

@@ -1,6 +1,5 @@
 import Taro, {Component, Config} from "@tarojs/taro";
 import './index.less'
-import { AtButton } from 'taro-ui'
 import {View} from "@tarojs/components";
 
 class Index extends Component{
@@ -16,7 +15,6 @@ class Index extends Component{
     return (
       <View>
         购物车
-        <AtButton>按钮文案</AtButton>
       </View>
     )
   }

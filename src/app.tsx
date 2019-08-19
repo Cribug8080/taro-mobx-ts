@@ -37,6 +37,7 @@ class App extends Component {
       'pages/classify/index',
       'pages/search/index',
       'pages/active/index',
+      'pages/goods/index',
     ],
     window: {
       backgroundTextStyle: 'light',
