@@ -1,51 +1,120 @@
-import {Swiper, SwiperItem, View} from "@tarojs/components";
+import {View, ScrollView, Button} from "@tarojs/components";
 import Taro, {Component, Config} from "@tarojs/taro";
 
-import './index.less'
+import './main.less'
+import {AtIcon} from "taro-ui";
+import {inject, observer} from "@tarojs/mobx";
 
-const imgs = new Array(5).fill(1).map((v, i) => {
-  return {
-    img: `https://raw.githubusercontent.com/Cribug8080/images/master/weixin/l${i+1}.dpg`,
-    url: `/pages/goods/index?goodsId=${i+123}`,
-  }
+import {mainGoodsType} from '../../store/main-goods'
+
+type PageStateProps = {
+  mainGoods: mainGoodsType;
+}
+
+interface Index {
+  props: PageStateProps;
+  state: any;
+}
+
+let menuList = ['精选', '种草', '超市', '电器', '女装', '生活', '箱包', '男士', '美妆'].map((v, i) => {
+ return {
+   active: i === 3,
+   title: v,
+   content: v+v,
+ }
 });
 
+@inject("mainGoods")
+@observer
 class Index extends Component{
 
   config: Config = {
-    navigationBarTitleText: '商品详情'
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuList,
+      currentId: "menu-scroll-id-0",
+    }
+  }
+
+  componentDidMount(): void {
+    this.initData();
+  }
+
   handleClick = (item) => {
-    Taro.navigateTo({
-      url: item.url,
+    menuList = menuList.map((v, i) => {
+      if(v.title === item.title) {
+        this.setState({
+          currentId: `menu-scroll-id-${i}`,
+        });
+        v.active = true;
+      }else {
+        v.active = false;
+      }
+      return v;
     });
+    this.setState({
+      menuList,
+    })
+  };
+
+  handleAdd = () => {
+    const { mainGoods } = this.props;
+    mainGoods.addGoods(() => {});
+  };
+
+  initData = () => {
+    const { mainGoods} = this.props;
+    mainGoods.initGoodsList(() => {});
   };
 
   render(): any {
+    const {mainGoods: {hisData}} = this.props;
+    console.log(hisData.length)
     return (
-      <View className="gun">
-        <Swiper
-          className='main'
-          indicatorColor='#999'
-          indicatorActiveColor='#333'
-          circular
-          indicatorDots
-          autoplay>
+      <View className="main">
+        <ScrollView
+          className='scrollview'
+          scrollX
+          scrollWithAnimation
+          scrollLeft={0}
+          lowerThreshold={50}
+          upperThreshold={50}
+        >
           {
-            imgs.map((item, i) => {
+            this.state.menuList.map((v, i) => {
+              const cn = v.active ? "scroll-item scroll-item-active" : "scroll-item scroll-item-normal";
               return (
-                <SwiperItem key={i}>
-                  <View className='image-wrap'>
-                    <Image onClick={() => {
-                      this.handleClick(item)
-                    }} className='image' src={item.img}/>
-                  </View>
-                </SwiperItem>
+                <View className={cn}
+                      key={i}
+                      id={`menu-scroll-id-${i}`}
+                      onClick={() => this.handleClick(v)}>
+                  <View className="title">{v.title}</View>
+                  <View className="content">{v.content}</View>
+                  <AtIcon className="icon"
+                          value='chevron-down'
+                          size='20' color='#F00'
+                          customStyle={{marginTop: '-10px', visibility: v.active ? 'visible' : 'hidden'}}/>
+                </View>
               )
             })
           }
-        </Swiper>
+        </ScrollView>
+        <View className="content">
+          {
+            hisData.map((v, i) => {
+              return (
+                <View className="item"
+                      key={i}>
+                  {v+i}
+                </View>
+              )
+            })
+          }
+          <Button onClick={this.handleAdd}>添加</Button>
+        </View>
       </View>
     )
   }

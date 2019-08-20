@@ -1,6 +1,5 @@
 .index {
   height: 100%;
-  background-color: red;
 }
 
 @imageSize: 50px;
@@ -8,6 +7,7 @@
 .search-header {
   padding: 10px 20px 10px 20px;
   height: @imageSize;
+  background-color: red;
   .main {
     display: inline-block;
     width: 545px;
@@ -32,21 +32,24 @@
   }
 }
 
-.gun {
-  height: 150Px;
-  width: 100%;
-  background-image: url(./../../images/home-header-bg.png);
-  background-size: 100% 100%;
-  .main {
-    height: 100%;
-    margin: 20px;
-    .image-wrap {
+.gun-wrap {
+  background-color: red;
+  .gun {
+    height: 150Px;
+    width: 100%;
+    background-image: url(./../../images/home-header-bg.png);
+    background-size: 100% 100%;
+    .main {
       height: 100%;
-      width: 100%;
-      .image {
-        border-radius: 10px;
+      padding: 20px;
+      .image-wrap {
         height: 100%;
         width: 100%;
+        .image {
+          border-radius: 10px;
+          height: 100%;
+          width: 100%;
+        }
       }
     }
   }

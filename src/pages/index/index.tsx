@@ -5,6 +5,7 @@ import { observer, inject } from '@tarojs/mobx'
 
 import SearchHeader from './search-header';
 import Main from './main'
+import Gun from './gun'
 
 import './index.less'
 
@@ -85,6 +86,7 @@ class Index extends Component {
               url: '/pages/search/index',
             }}
           />
+          <Gun />
           <Main />
         </View>
       </View>
