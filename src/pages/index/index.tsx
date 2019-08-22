@@ -1,11 +1,12 @@
 import { ComponentType } from 'react'
 import Taro, { Component, Config } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import {ScrollView, View} from '@tarojs/components'
 import { observer, inject } from '@tarojs/mobx'
 
 import SearchHeader from './search-header';
 import Main from './main'
 import Gun from './gun'
+import SecondMenu from './second-menu'
 
 import './index.less'
 
@@ -68,28 +69,28 @@ class Index extends Component {
   render () {
     const { counterStore: { counter } } = this.props;
     return (
-      <View className='index'>
-        {/*<Button onClick={this.increment}>+</Button>*/}
-        {/*<Button onClick={this.decrement}>-</Button>*/}
-        {/*<Button onClick={this.incrementAsync}>Add Async</Button>*/}
-        {/*<Text>{counter}</Text>*/}
-        <View>
-          <SearchHeader
-            left={{
-              url: '/pages/classify/index',
-              isTab: true,
-            }}
-            right={{
-              url: '/pages/active/index',
-            }}
-            main={{
-              url: '/pages/search/index',
-            }}
-          />
-          <Gun />
-          <Main />
-        </View>
-      </View>
+      <ScrollView
+        scrollY
+        scrollWithAnimation
+        lowerThreshold={50}
+        upperThreshold={50}
+        className='index'>
+        <SearchHeader
+          left={{
+            url: '/pages/classify/index',
+            isTab: true,
+          }}
+          right={{
+            url: '/pages/active/index',
+          }}
+          main={{
+            url: '/pages/search/index',
+          }}
+        />
+        <Gun />
+        <SecondMenu />
+        <Main />
+      </ScrollView>
     )
   }
 }

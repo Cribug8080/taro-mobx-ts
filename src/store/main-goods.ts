@@ -12,7 +12,6 @@ const mainGoods = observable({
   initGoodsList (callback) {
     api.get('mall/index/goods').then(res => {
       this.hisData = res.data.data.list;
-      console.log(this.hisData)
       callback && callback();
     }).catch((e) => {
       console.error(e);

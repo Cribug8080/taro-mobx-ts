@@ -1,0 +1,42 @@
+@ItemHeight: 130px;
+.scrollview {
+  position: sticky;
+  top: 78px;
+  z-index: 1000;
+  height: @ItemHeight;
+  white-space: nowrap;
+  background-color: white;
+  .scroll-item {
+    display: inline-block;
+    width: 120px;
+    margin-right: 15px;
+    height: @ItemHeight;
+    text-align: center;
+    &:last-child {
+      margin-right: 0;
+    }
+    .title {
+      font-size: large;
+    }
+    .content {
+      font-size: small;
+    }
+  }
+  .scroll-item-normal {
+    .title {
+      font-weight: normal;
+    }
+    .content {
+      color: black;
+    }
+  }
+  .scroll-item-active {
+    .title {
+      font-size: larger;
+      font-weight: bold;
+    }
+    .content {
+      color: red;
+    }
+  }
+}
