@@ -1,7 +1,8 @@
 import Taro, {Component} from "@tarojs/taro";
-import {Swiper, SwiperItem, View} from "@tarojs/components";
+import {View} from "@tarojs/components";
 
 import iconCart from './../../images/cart.png';
+import iconScan from './../../images/scan.png';
 
 import './index.less'
 import {AtIcon} from "taro-ui";
@@ -26,8 +27,13 @@ interface Index {
 class Index extends Component{
 
   handleClickLeft = () => {
-    const { left } = this.props;
-    this.handleClick(left);
+    // const { left } = this.props;
+    // this.handleClick(left);
+
+    Taro.scanCode().then((e) => {
+      console.log(e)
+    })
+
   };
 
   handleClickRight = () => {
@@ -54,15 +60,13 @@ class Index extends Component{
 
   render(): any {
     return (
-      <View>
-        <View className="search-header">
-          <Image src={iconCart} className="image image-left" onClick={ this.handleClickLeft }/>
-          <View className="main" onClick={ this.handleClickMain }>
-            <AtIcon value='search' size='20' color='#ccc' customStyle={{marginRight: '10px'}}></AtIcon>
-            生日礼物
-          </View>
-          <Image src={iconCart} className="image image-right" onClick={ this.handleClickRight }/>
+      <View className="search-header">
+        <Image src={iconScan} className="image image-left" onClick={ this.handleClickLeft }/>
+        <View className="main" onClick={ this.handleClickMain }>
+          <AtIcon value='search' size='20' color='#ccc' customStyle={{marginRight: '10px'}} />
+          生日礼物
         </View>
+        <Image src={iconCart} className="image image-right" onClick={ this.handleClickRight }/>
       </View>
     )
   }
