@@ -13,6 +13,6 @@
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
-	"condition": {},
-  "checkSiteMap": false
+	"checkSiteMap": false,
+	"condition": {}
 }
