@@ -43,6 +43,12 @@ class Index extends Component{
     mainGoods.initGoodsList(() => {});
   };
 
+  handleGoodsDetail = function(item) {
+    Taro.navigateTo({
+      url: `/pages/goods/index?goodsId=${item.key}`,
+    });
+  };
+
   render(): any {
     const {mainGoods: {hisData}} = this.props;
     const aa = hisData.map((v, i) => {
@@ -56,6 +62,7 @@ class Index extends Component{
             aa.map((v, i) => {
               return (
                 <View className="item"
+                      onClick={this.handleGoodsDetail.bind(this, v)}
                       key={i}>
                   <Image src={v.img} className="image"/>
                   <View>
@@ -67,7 +74,7 @@ class Index extends Component{
               )
             })
           }
-          <Button onClick={this.handleAdd}>添加</Button>
+          <Button onClick={this.handleAdd}>加载更多</Button>
         </View>
       </View>
     )

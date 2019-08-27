@@ -1,7 +1,19 @@
 import Taro, {Component, Config} from "@tarojs/taro";
 import {View} from "@tarojs/components";
-import {AtTabBar} from "taro-ui";
+import {inject, observer} from "@tarojs/mobx";
+import {goodsDetailType} from "../../store/goods-detail";
 
+interface Index {
+  props: {
+    goodsDetail: goodsDetailType,
+  },
+  state: {
+    goodsId: number,
+  }
+}
+
+@inject("goodsDetail")
+@observer
 class Index extends Component{
 
   config: Config = {
@@ -11,15 +23,15 @@ class Index extends Component{
   constructor(props) {
     super(props);
     this.state = {
-      goodsId: null,
-      current: 0
+      goodsId: 0
     }
   }
 
   componentDidShow(): void {
-    this.setState({
-      goodsId: this.$router.params.goodsId,
-    })
+    const {goodsDetail} = this.props;
+    goodsDetail.initGoodsDetail({
+      id: this.$router.params.goodsId,
+    });
   }
 
   handleClick = function(args) {
@@ -29,10 +41,10 @@ class Index extends Component{
   };
 
   render(): any {
+    const {goodsDetail} = this.props;
     return (
       <View>
-        商品{this.state.goodsId}详情
-
+        {JSON.stringify(goodsDetail.hisData)}
       </View>
     )
   }

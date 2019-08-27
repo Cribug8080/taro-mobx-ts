@@ -1,6 +1,7 @@
 import { HTTP_STATUS } from '../const/status'
 import { logError } from '../utils/logError'
 import Taro from '@tarojs/taro'
+import { getArgsStringfiy } from './../utils/tools'
 
 const baseURL = "https://www.easy-mock.com/mock/5d5104f7cef7fe7b0911917e/";
 
@@ -8,7 +9,6 @@ function baseOptions(params, method = 'GET') {
   let { url, data } = params
   // let token = getApp().globalData.token
   // if (!token) login()
-  console.log('params', params)
   let contentType = 'application/x-www-form-urlencoded'
   contentType = params.contentType || contentType
   const option = {
@@ -40,6 +40,9 @@ function baseOptions(params, method = 'GET') {
 export default {
   baseOptions: baseOptions,
   get(url, data = '') {
+    if(data) {
+      url += getArgsStringfiy(data);
+    }
     let option = { url, data }
     return this.baseOptions(option)
   },
