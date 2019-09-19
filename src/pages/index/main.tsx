@@ -56,7 +56,7 @@ class Index extends Component{
       return v;
     });
     return (
-      <View className="main">
+      <View className="home-main">
         <View className="content">
           {
             aa.map((v, i) => {

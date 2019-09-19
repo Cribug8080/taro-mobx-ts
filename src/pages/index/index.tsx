@@ -35,7 +35,7 @@ class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '京东购物'
+    navigationBarTitleText: '购物商城'
   };
 
   componentWillMount () { }
@@ -96,3 +96,44 @@ class Index extends Component {
 }
 
 export default Index  as ComponentType
+
+// <View className='index'>
+//   <SearchHeader
+// left={{
+//   url: '/pages/classify/index',
+//     isTab: true,
+// }}
+// right={{
+//   url: '/pages/active/index',
+// }}
+// main={{
+//   url: '/pages/search/index',
+// }}
+// />
+// <Gun />
+// <SecondMenu />
+// <Main />
+// </View>
+
+// <ScrollView
+// scrollY
+// scrollWithAnimation
+// lowerThreshold={50}
+// upperThreshold={50}
+// className='index'>
+//   <SearchHeader
+// left={{
+//   url: '/pages/classify/index',
+//     isTab: true,
+// }}
+// right={{
+//   url: '/pages/active/index',
+// }}
+// main={{
+//   url: '/pages/search/index',
+// }}
+// />
+// <Gun />
+// <SecondMenu />
+// <Main />
+// </ScrollView>
